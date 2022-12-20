@@ -1,0 +1,116 @@
+@model CustomerRegistration.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">        
+        <h4>Customer</h4>
+        <hr />
+        <form asp-action="AddOrEdit" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Cpf" class="control-label"></label>
+                <input asp-for="Cpf" class="form-control" />
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" type="date"/>
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>                        
+                        <select asp-for="Gender" class="form-select">
+                            <option value=""></option>
+                            <option value="Male">Male</option>  
+                            <option value="Female">Female</option> 
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <select asp-for="State" id="state" class="form-select">                    
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <select asp-for="City" id="city" class="form-select">                    
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary  w-100">View All</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+    <script>
+        const urlUF = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+        const state = document.getElementById("state");
+        const city = document.getElementById("city")
+
+        // Function to call states
+        window.addEventListener('load', async () => {
+            const request = await fetch(urlUF);
+            const response = await request.json()
+
+            const options = document.createElement("optGroup")
+            options.setAttribute('label', 'UFs')
+            response.forEach(function(uf) {
+                options.innerHTML += '<option>'+uf.sigla+'</option>' 
+            })
+            state.append(options);            
+        })  
+
+        // Function to call cities
+        state.addEventListener('change', async function() {
+            const urlCities = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'+state.value+'/municipios'
+            const request = await fetch(urlCities)
+            const response = await request.json()
+            
+            let options = ''
+            response.forEach(function(cities){
+                options += '<option>'+cities.nome+'</option>'
+            })
+            city.innerHTML = options
+        })
+
+    </script>
+
+}
