@@ -18,7 +18,7 @@ pesquisa, alteração e exclusão de clientes fictícios.
 * SQL Server
 
 ## ⚙️ Como executar?
-Após clonar a aplicação localmente no seu VSCode basta rodar o comando
+Após clonar a aplicação localmente, no seu VSCode basta rodar no terminal do repositório o comando
 ```bash
 dotnet build
 ```
@@ -26,7 +26,7 @@ E em seguida
 ```bash
 dotnet run
 ```
-Lembrando que precisa também ter o banco de dados instalado localmente e configurado com as credenciais no arquivo 'appsettings.json':
+Lembrando que precisa também ter o banco de dados instalado localmente e configurado com as credenciais corretas no arquivo 'appsettings.json':
 
 ```json
 "ConnectionStrings": {
