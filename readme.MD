@@ -1,5 +1,5 @@
 <p align="center">
-
+    <img src="https://github.com/marioalvesx/CustomerRegistration-Upd8/blob/master/CustomerRegistration.png" width="700px"/>
 </p>
 <h1 align="center"> 🛠️ Aplicação para cadastro de cliente </h1>
 
