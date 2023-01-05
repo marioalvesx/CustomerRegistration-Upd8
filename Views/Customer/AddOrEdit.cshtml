@@ -4,6 +4,10 @@
     ViewData["Title"] = "Create";
 }
 
+<head>
+    <script type="text/javascript" src="~/js/FormMaskCPF.js"></script>
+</head>
+
 <div class="row">
     <div class="col-md-6 offset-md-3">        
         <h4>Customer</h4>
@@ -84,7 +88,7 @@
         const urlUF = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
         const state = document.getElementById("State");
         const city = document.getElementById("City");
-        const cpf = document.getElementById("cpf");
+        //const cpf = document.getElementById("cpf");
 
         // Function to call states
         window.addEventListener('load', async () => {
@@ -111,8 +115,11 @@
             })
             city.innerHTML = options
         })
+        
+        // CPF Mask
+        new FormMask(document.querySelector("#cpf"), "___.___.___-__", "_", [".", "-"])
 
-        cpf.addEventListener('change', async function() {
+        /*cpf.addEventListener('change', async function() {
             var Cpf = cpf.value
             function TestaCPF(Cpf) {
                 var Soma;
@@ -139,7 +146,7 @@
             }else{
                 alert("CPF Valid!");
             }
-        })
+        })*/ 
 
     </script>
 

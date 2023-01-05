@@ -9,6 +9,7 @@ namespace CustomerRegistration.Models
         public int Id { get; set; }
 
         [Required]
+        [CpfVerificator]
         public string Cpf { get; set; }
 
         [Required]
@@ -18,6 +19,7 @@ namespace CustomerRegistration.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [BindProperty, DataType(DataType.Date)]
+        [Min18YearsIfACustomer]
         public DateTime Birthday { get; set; }
         
         [Column(TypeName = "nvarchar(10)")]
