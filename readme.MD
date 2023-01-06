@@ -17,6 +17,14 @@ pesquisa, alteração e exclusão de clientes fictícios.
 * Javascript
 * SQL Server
 
+## ⚛️ Recursos Extras
+
+* Integração: Exibe todos os estados e cidades do Brasil utilizando a API pública do IBGE.
+https://servicodados.ibge.gov.br/api/docs/localidades#api-UFs-estadosGet
+* Paginação client side e busca de clientes utilizando DataTables do JQuery.
+* Máscara de CPF utilizando Javascript puro.
+* Validação customizada do CPF utilizando biblioteca Caelum.Stella.CSharp.Validation.
+
 ## ⚙️ Como executar?
 Após clonar a aplicação localmente, no seu VSCode basta rodar no terminal do repositório o comando
 ```bash
