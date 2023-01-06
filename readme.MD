@@ -23,6 +23,7 @@ pesquisa, alteração e exclusão de clientes fictícios.
 https://servicodados.ibge.gov.br/api/docs/localidades#api-UFs-estadosGet
 * Paginação client side e busca de clientes utilizando DataTables do JQuery.
 * Máscara de CPF utilizando Javascript puro.
+* Validação customizada permitindo a inclusão apenas de clientes maiores de idade.
 * Validação customizada do CPF utilizando biblioteca Caelum.Stella.CSharp.Validation.
 
 ## ⚙️ Como executar?
